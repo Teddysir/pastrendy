@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 상품 인식 및 결제 시스템</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Teachable Machine 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <!-- 사용자 정의 JavaScript -->
+    <script src="{% static 'js/js_auto.js' %}?v=1.0"></script>
+</head>
+<body>
+    <header>
+        <h1>AI 상품 인식 및 결제</h1>
+    </header>
+
+    <!-- 웹캠 및 AI 예측 결과 -->
+    <section>
+        <h2>상품 인식</h2>
+        <video id="webcam" autoplay muted playsinline></video>
+        <div id="label-container"></div>
+        <button id="initialize-button">카메라와 모델 초기화</button>
+    </section>
+
+    <!-- 선택된 상품 리스트 -->
+    <section id="selected-items">
+        <h2>선택된 상품</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>상품명</th>
+                    <th>수량</th>
+                    <th>가격</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <!-- 총 가격 및 결제 버튼 -->
+    <div>
+        <h3>총 가격: ₩<span id="total-price">0</span></h3>
+        <button id="checkout-button">결제</button>
+    </div>
+
+</body>
+</html>
+    

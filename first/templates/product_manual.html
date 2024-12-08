@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키오스크</title>
+    <link rel="stylesheet" href="{% static 'css/style_manual.css' %}">
+    <script>
+        const csrfToken = '{{ csrf_token }}';
+    </script>    
+</head>
+<body>
+    <h1>상품 선택</h1>
+    <div class="grid-container">
+        {% for item in items %}
+        <div class="product-card" data-id="{{ item.id }}" data-name="{{ item.name }}" data-price="{{ item.price }}" data-quantity="{{ item.quantity }}">
+            <h3>{{ item.name }}</h3>
+            <p>₩{{ item.price }}</p>
+            <p>남은 수량: {{ item.quantity }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <h2>선택된 상품</h2>
+    <table id="selected-items">
+        <thead>
+            <tr>
+                <th>상품명</th>
+                <th>수량</th>
+                <th>가격</th>
+                <th>작업</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <h3>총 가격: ₩<span id="total-price">0</span></h3>
+    <button id="checkout-button">결제</button>
+    <script src="{% static 'js/js_manual.js' %}"></script>
+</body>
+</html>

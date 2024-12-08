@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>재고 목록</title>
+    <link rel="stylesheet" href="{% static 'css/style_list.css' %}">
+</head>
+<body>
+    <h1>재고 목록</h1>
+    <a href="{% url 'inventory_add' %}" class="add">추가</a>
+    <a href="{% url 'product_manual' %}" class="manual">결제 페이지</a>
+    <table border="1">
+        <tr>
+            <th>제품명</th>
+            <th>수량</th>
+            <th>가격</th>
+            <th>작업</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+                <a href="{% url 'inventory_edit' item.pk %}">수정</a>
+                <form action="{% url 'inventory_delete' item.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">삭제</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
