@@ -1,0 +1,135 @@
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+
+/* 링크 스타일 */
+a {
+    padding: 6.5px 10px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    background-color: #1e649e;
+}
+
+/* 추가 버튼 스타일 */
+.add {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.add:hover {
+    background-color: #45a049;
+}
+
+.manual {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.manual:hover {
+    background-color: #45a049;
+}
+
+/* 작은 화면에 맞춰서 테이블을 스크롤 가능하게 만듦 */
+@media (max-width: 768px) {
+    table {
+        overflow-x: auto;
+        display: block;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+
+/* 모바일에서 각 셀을 블록으로 표시하여 세로로 쌓이게 함 */
+@media (max-width: 480px) {
+    th, td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    td {
+        border-top: 1px solid #ddd;
+    }
+
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    a[href$="inventory_add"] {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+}
